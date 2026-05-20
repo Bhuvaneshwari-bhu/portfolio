@@ -159,7 +159,7 @@ export default function Projects() {
               transition={{ delay: 0.4 }}
             >
               <a
-                href="https://github.com"
+                href="https://github.com/Bhuvaneshwari-bhu"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary text-sm px-8 py-3"

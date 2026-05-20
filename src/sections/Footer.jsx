@@ -1,24 +1,24 @@
 import { motion } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiTwitter, FiMail, FiHeart } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiHeart } from 'react-icons/fi';
+import { LINKS } from '../constants/links';
 
 const socials = [
-  { icon: FiGithub, href: 'https://github.com', label: 'GitHub' },
-  { icon: FiLinkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: FiTwitter, href: 'https://twitter.com', label: 'Twitter' },
-  { icon: FiMail, href: 'mailto:hello@portfolio.dev', label: 'Email' },
+  { icon: FiGithub,   href: LINKS.github,   label: 'GitHub' },
+  { icon: FiLinkedin, href: LINKS.linkedin, label: 'LinkedIn' },
+  { icon: FiMail,     href: LINKS.email,    label: 'Email' },
 ];
 
 const links = [
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
+  { label: 'About',    href: '#about' },
+  { label: 'Skills',   href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Contact',  href: '#contact' },
 ];
 
 export default function Footer() {
   return (
     <footer className="relative border-t border-white/5 overflow-hidden">
-      {/* Subtle glow */}
+      {/* Top glow line */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-px"
         style={{ background: 'linear-gradient(90deg, transparent, rgba(99,102,241,0.5), transparent)' }}
@@ -92,14 +92,12 @@ export default function Footer() {
           </motion.div>
         </div>
 
-        {/* Divider */}
+        {/* Divider + copyright */}
         <div className="border-t border-white/5 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-white/25 text-xs">
-            <p>
-              © {new Date().getFullYear()} Bhuvaneshwari. All rights reserved.
-            </p>
+            <p>© {new Date().getFullYear()} Bhuvaneshwari. All rights reserved.</p>
             <p className="flex items-center gap-1.5">
-              Built with <FiHeart className="text-brand-400" size={11} /> using React, Vite & Tailwind CSS
+              Built with <FiHeart className="text-brand-400" size={11} /> using React, Vite &amp; Tailwind CSS
             </p>
           </div>
         </div>

@@ -1,14 +1,15 @@
 import { motion } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiTwitter, FiDownload, FiArrowRight } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiDownload, FiArrowRight } from 'react-icons/fi';
 import { HiSparkles } from 'react-icons/hi2';
 import GlowBlob from '../components/GlowBlob';
 import TypeWriter from '../components/TypeWriter';
 import ScrollIndicator from '../components/ScrollIndicator';
+import { LINKS } from '../constants/links';
 
 const socials = [
-  { icon: FiGithub, href: 'https://github.com', label: 'GitHub' },
-  { icon: FiLinkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: FiTwitter, href: 'https://twitter.com', label: 'Twitter' },
+  { icon: FiGithub,   href: LINKS.github,   label: 'GitHub' },
+  { icon: FiLinkedin, href: LINKS.linkedin, label: 'LinkedIn' },
+  { icon: FiMail,     href: LINKS.email,    label: 'Email' },
 ];
 
 const fadeUp = (delay = 0) => ({
@@ -25,7 +26,7 @@ export default function Hero() {
     >
       {/* Background blobs */}
       <GlowBlob color="#6366f1" size={700} x="15%" y="30%" opacity={0.12} delay={0} />
-      <GlowBlob color="#a855f7" size={500} x="80%" y="20%" opacity={0.1} delay={2} />
+      <GlowBlob color="#a855f7" size={500} x="80%" y="20%" opacity={0.1}  delay={2} />
       <GlowBlob color="#22d3ee" size={400} x="70%" y="75%" opacity={0.08} delay={4} />
       <GlowBlob color="#ec4899" size={300} x="10%" y="80%" opacity={0.07} delay={1} />
 
@@ -33,6 +34,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-dark-950/80 pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center pt-24 pb-12 flex flex-col items-center">
+
         {/* Badge */}
         <motion.div {...fadeUp(0.1)}>
           <div
@@ -44,7 +46,7 @@ export default function Hero() {
             }}
           >
             <HiSparkles className="text-brand-400" />
-            Available for opportunities
+            Computer Science Engineering Student
             <span className="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse" />
           </div>
         </motion.div>
@@ -65,49 +67,66 @@ export default function Hero() {
               animation: 'gradient 5s ease infinite',
             }}
           >
-            AI Developer
+            Full Stack Developer
           </span>
         </motion.h1>
 
         {/* Typewriter */}
-        <motion.div {...fadeUp(0.35)} className="text-2xl md:text-3xl font-semibold text-white/60 mb-6 h-10">
-          I&apos;m a{' '}
-          <TypeWriter />
+        <motion.div
+          {...fadeUp(0.35)}
+          className="text-2xl md:text-3xl font-semibold text-white/60 mb-6 h-10"
+        >
+          I&apos;m a <TypeWriter />
         </motion.div>
 
-        {/* Sub text */}
+        {/* Subtitle */}
         <motion.p
           {...fadeUp(0.45)}
           className="text-white/45 text-base md:text-lg max-w-2xl leading-relaxed mb-10"
         >
-          I craft beautiful, high-performance web applications with modern technologies.
-          Passionate about React, AI, and building products that make a difference.
+          I build modern, responsive, and interactive web experiences with clean UI
+          and scalable backend systems.
         </motion.p>
 
         {/* CTA Buttons */}
-        <motion.div {...fadeUp(0.55)} className="flex flex-wrap items-center justify-center gap-4 mb-12">
+        <motion.div
+          {...fadeUp(0.55)}
+          className="flex flex-wrap items-center justify-center gap-4 mb-12"
+        >
           <motion.a
             href="#projects"
-            onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }); }}
+            onClick={(e) => {
+              e.preventDefault();
+              document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
+            }}
             className="btn-primary text-sm px-7 py-3.5"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
           >
             View Projects <FiArrowRight />
           </motion.a>
-          <motion.a
-            href="/resume.pdf"
-            download
-            className="btn-secondary text-sm px-7 py-3.5"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-          >
-            <FiDownload /> Download Resume
-          </motion.a>
+          {LINKS.resume ? (
+            <motion.a
+              href={LINKS.resume}
+              download
+              className="btn-secondary text-sm px-7 py-3.5"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              <FiDownload /> Download Resume
+            </motion.a>
+          ) : (
+            <motion.span
+              className="btn-secondary text-sm px-7 py-3.5 opacity-40 cursor-not-allowed select-none"
+              title="Resume coming soon"
+            >
+              <FiDownload /> Resume Coming Soon
+            </motion.span>
+          )}
         </motion.div>
 
         {/* Socials */}
-        <motion.div {...fadeUp(0.65)} className="flex items-center gap-4 mb-16">
+        <motion.div {...fadeUp(0.65)} className="flex items-center gap-4 mb-20">
           {socials.map(({ icon: Icon, href, label }) => (
             <motion.a
               key={label}
@@ -126,26 +145,8 @@ export default function Hero() {
           <span className="text-white/30 text-xs">Let&apos;s connect</span>
         </motion.div>
 
-        {/* Stats row */}
-        <motion.div
-          {...fadeUp(0.75)}
-          className="flex flex-wrap items-center justify-center gap-8 mb-16"
-        >
-          {[
-            { num: '20+', label: 'Projects Built' },
-            { num: '2+', label: 'Years Experience' },
-            { num: '10+', label: 'Tech Stack' },
-            { num: '5★', label: 'Client Rating' },
-          ].map(({ num, label }) => (
-            <div key={label} className="text-center">
-              <div className="text-2xl font-bold gradient-text">{num}</div>
-              <div className="text-white/40 text-xs mt-0.5">{label}</div>
-            </div>
-          ))}
-        </motion.div>
-
         {/* Scroll indicator */}
-        <motion.div {...fadeUp(0.85)}>
+        <motion.div {...fadeUp(0.75)}>
           <ScrollIndicator />
         </motion.div>
       </div>

@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiTwitter, FiMail, FiSend, FiCheck } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiSend, FiCheck } from 'react-icons/fi';
 import SectionHeading from '../components/SectionHeading';
 import GlowBlob from '../components/GlowBlob';
+import { LINKS } from '../constants/links';
 
 const socials = [
-  { icon: FiGithub, label: 'GitHub', href: 'https://github.com', color: '#ffffff' },
-  { icon: FiLinkedin, label: 'LinkedIn', href: 'https://linkedin.com', color: '#0a66c2' },
-  { icon: FiTwitter, label: 'Twitter', href: 'https://twitter.com', color: '#1da1f2' },
-  { icon: FiMail, label: 'Email', href: 'mailto:hello@portfolio.dev', color: '#6366f1' },
+  { icon: FiGithub,   label: 'GitHub',   href: LINKS.github,   color: '#ffffff' },
+  { icon: FiLinkedin, label: 'LinkedIn', href: LINKS.linkedin, color: '#0a66c2' },
+  { icon: FiMail,     label: 'Email',    href: LINKS.email,    color: '#6366f1' },
 ];
 
 export default function Contact() {
@@ -39,7 +39,7 @@ export default function Contact() {
           tag="Contact"
           title="Let's Build"
           highlight="Something Great"
-          subtitle="Have a project in mind? I'd love to hear about it. Let's connect and create something amazing together."
+          subtitle="Have a project in mind or want to collaborate? I'd love to hear from you."
         />
 
         <div className="grid md:grid-cols-2 gap-10 items-start">
@@ -51,10 +51,10 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
           >
             <div className="glass rounded-2xl p-8 mb-6">
-              <h3 className="text-lg font-bold text-white mb-2">Available for Freelance</h3>
+              <h3 className="text-lg font-bold text-white mb-2">Open to Opportunities</h3>
               <p className="text-white/50 text-sm leading-relaxed mb-6">
-                I&apos;m currently open to freelance opportunities, full-time roles, and interesting
-                collaborations. If you have a project that needs a creative developer, let&apos;s talk.
+                I&apos;m actively looking for internship roles, freelance projects, and open-source
+                collaborations. If you&apos;d like to work together or just have a chat, feel free to reach out.
               </p>
 
               <div className="flex items-center gap-3 p-3 rounded-xl glass">
@@ -140,7 +140,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  placeholder="Tell me about your project..."
+                  placeholder="Tell me about your project or idea..."
                   className="input-field resize-none"
                 />
               </div>
@@ -153,9 +153,7 @@ export default function Contact() {
                 whileTap={{ scale: 0.98 }}
               >
                 {submitted ? (
-                  <>
-                    <FiCheck /> Message Sent!
-                  </>
+                  <><FiCheck /> Message Sent!</>
                 ) : loading ? (
                   <span className="flex items-center gap-2">
                     <motion.span
@@ -166,9 +164,7 @@ export default function Contact() {
                     Sending...
                   </span>
                 ) : (
-                  <>
-                    <FiSend /> Send Message
-                  </>
+                  <><FiSend /> Send Message</>
                 )}
               </motion.button>
 

@@ -2,6 +2,9 @@ import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink, FiPlay, FiMaximize2 } from 'react-icons/fi';
 
+const PLACEHOLDER_PATTERN = /your-username|your-repo|example\.com/i;
+const isValidLink = (url) => url && url.trim() !== '' && !PLACEHOLDER_PATTERN.test(url);
+
 export default function ProjectCard({ project, onClick }) {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const cardRef = useRef(null);
@@ -92,25 +95,45 @@ export default function ProjectCard({ project, onClick }) {
 
         {/* Actions */}
         <div className="flex items-center gap-2 pt-3 border-t border-white/5">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="flex items-center gap-1.5 text-white/40 hover:text-white text-xs font-medium transition-colors duration-200 hover:bg-white/5 px-2.5 py-1.5 rounded-lg"
-          >
-            <FiGithub size={13} /> GitHub
-          </a>
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="flex items-center gap-1.5 text-white/40 hover:text-white text-xs font-medium transition-colors duration-200 hover:bg-white/5 px-2.5 py-1.5 rounded-lg"
-          >
-            <FiExternalLink size={13} /> Live
-          </a>
-          {project.video && (
+          {isValidLink(project.github) ? (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="flex items-center gap-1.5 text-white/40 hover:text-white text-xs font-medium transition-colors duration-200 hover:bg-white/5 px-2.5 py-1.5 rounded-lg"
+            >
+              <FiGithub size={13} /> GitHub
+            </a>
+          ) : (
+            <span
+              title="Coming soon"
+              onClick={(e) => e.stopPropagation()}
+              className="flex items-center gap-1.5 text-white/20 text-xs font-medium px-2.5 py-1.5 rounded-lg cursor-not-allowed select-none"
+            >
+              <FiGithub size={13} /> GitHub
+            </span>
+          )}
+          {isValidLink(project.live) ? (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="flex items-center gap-1.5 text-white/40 hover:text-white text-xs font-medium transition-colors duration-200 hover:bg-white/5 px-2.5 py-1.5 rounded-lg"
+            >
+              <FiExternalLink size={13} /> Live
+            </a>
+          ) : (
+            <span
+              title="Coming soon"
+              onClick={(e) => e.stopPropagation()}
+              className="flex items-center gap-1.5 text-white/20 text-xs font-medium px-2.5 py-1.5 rounded-lg cursor-not-allowed select-none"
+            >
+              <FiExternalLink size={13} /> Live
+            </span>
+          )}
+          {project.video && isValidLink(project.video) && (
             <a
               href={project.video}
               target="_blank"

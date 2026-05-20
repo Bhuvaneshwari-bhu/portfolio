@@ -10,8 +10,27 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Auto-detect active section via IntersectionObserver
+  useEffect(() => {
+    const sections = navLinks.map((l) => document.querySelector(l.href)).filter(Boolean);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting);
+        if (visible.length > 0) {
+          const topmost = visible.reduce((a, b) =>
+            a.boundingClientRect.top < b.boundingClientRect.top ? a : b
+          );
+          setActive(`#${topmost.target.id}`);
+        }
+      },
+      { threshold: 0.35 }
+    );
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   const handleNav = (href) => {

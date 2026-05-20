@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const WORDS = ['React Developer', 'Full Stack Engineer', 'AI Enthusiast', 'Open Source Contributor'];
+const WORDS = ['MERN Stack Developer', 'Frontend Developer', 'AI Enthusiast', 'Problem Solver'];
 
 export default function TypeWriter() {
   const [wordIndex, setWordIndex] = useState(0);
@@ -14,14 +14,14 @@ export default function TypeWriter() {
 
     if (!deleting && charIndex <= current.length) {
       setText(current.slice(0, charIndex));
-      timeout = setTimeout(() => setCharIndex((c) => c + 1), 80);
+      timeout = setTimeout(() => setCharIndex((c) => c + 1), 75);
     } else if (deleting && charIndex >= 0) {
       setText(current.slice(0, charIndex));
-      timeout = setTimeout(() => setCharIndex((c) => c - 1), 40);
+      timeout = setTimeout(() => setCharIndex((c) => c - 1), 38);
     }
 
     if (!deleting && charIndex === current.length + 1) {
-      timeout = setTimeout(() => setDeleting(true), 1800);
+      timeout = setTimeout(() => setDeleting(true), 2000);
     }
 
     if (deleting && charIndex === -1) {

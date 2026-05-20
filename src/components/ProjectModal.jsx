@@ -2,6 +2,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiGithub, FiExternalLink, FiPlay } from 'react-icons/fi';
 import { useEffect } from 'react';
 
+const PLACEHOLDER_PATTERN = /your-username|your-repo|example\.com/i;
+const isValidLink = (url) => url && url.trim() !== '' && !PLACEHOLDER_PATTERN.test(url);
+
 export default function ProjectModal({ project, onClose }) {
   useEffect(() => {
     const handler = (e) => e.key === 'Escape' && onClose();
@@ -59,12 +62,12 @@ export default function ProjectModal({ project, onClose }) {
             >
               <FiX size={16} />
             </button>
-            {/* Color tag */}
+            {/* Category tag */}
             <div
               className="absolute bottom-4 left-5 text-xs font-semibold px-3 py-1 rounded-full"
               style={{ background: `${project.color}25`, color: project.color, border: `1px solid ${project.color}40` }}
             >
-              Featured Project
+              {project.category || 'Project'}
             </div>
           </div>
 
@@ -92,23 +95,41 @@ export default function ProjectModal({ project, onClose }) {
 
             {/* Action buttons */}
             <div className="flex flex-wrap gap-3">
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary text-xs px-4 py-2.5"
-              >
-                <FiGithub /> GitHub
-              </a>
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary text-xs px-4 py-2.5"
-              >
-                <FiExternalLink /> Live Demo
-              </a>
-              {project.video && (
+              {isValidLink(project.github) ? (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary text-xs px-4 py-2.5"
+                >
+                  <FiGithub /> GitHub
+                </a>
+              ) : (
+                <span
+                  title="Coming soon"
+                  className="btn-secondary text-xs px-4 py-2.5 opacity-35 cursor-not-allowed select-none"
+                >
+                  <FiGithub /> GitHub
+                </span>
+              )}
+              {isValidLink(project.live) ? (
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary text-xs px-4 py-2.5"
+                >
+                  <FiExternalLink /> Live Demo
+                </a>
+              ) : (
+                <span
+                  title="Coming soon"
+                  className="btn-primary text-xs px-4 py-2.5 opacity-35 cursor-not-allowed select-none"
+                >
+                  <FiExternalLink /> Coming Soon
+                </span>
+              )}
+              {project.video && isValidLink(project.video) && (
                 <a
                   href={project.video}
                   target="_blank"

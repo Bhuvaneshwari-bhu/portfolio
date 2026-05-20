@@ -1,30 +1,35 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Seed data — Replace these placeholders with your real projects.
+// You can also manage all projects from the Admin Dashboard at /admin.
+// ─────────────────────────────────────────────────────────────────────────────
+
 const seedProjects = [
   {
-    title: 'NeuroChat — AI Chatbot Platform',
+    title: 'Your Project 1 — Replace with Real Project',
     description:
-      'A full-stack AI-powered chatbot platform with real-time streaming, custom knowledge bases, and multi-model support.',
+      'Add your real project description here. What did you build? What problem does it solve? What makes it interesting?',
     longDescription:
-      'NeuroChat is a production-ready AI chatbot platform enabling businesses to deploy intelligent assistants trained on their own data. Features include real-time streaming responses, conversation history, RAG pipeline, and an analytics dashboard.',
-    image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80',
-    techStack: ['React', 'Node.js', 'OpenAI', 'MongoDB', 'Socket.io', 'Tailwind'],
-    githubLink: 'https://github.com',
-    liveLink: 'https://example.com',
+      'Replace this with a detailed description of your project. Talk about the features, challenges you faced, and what you learned. You can edit this from the Admin Dashboard at /admin/projects.',
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80',
+    techStack: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS'],
+    githubLink: 'https://github.com/your-username/your-repo',
+    liveLink: '',
     videoDemoLink: '',
-    category: 'AI',
+    category: 'Full Stack',
     featured: true,
     color: '#6366f1',
     order: 1,
   },
   {
-    title: 'DevFlow — Project Management SaaS',
+    title: 'Your Project 2 — Add Your Deployed Project',
     description:
-      'A Linear-inspired project management tool with Kanban boards, sprint planning, real-time collaboration, and GitHub integration.',
+      'Describe your second project here. Include the key features and the tech stack you used to build it.',
     longDescription:
-      'DevFlow is a modern project management application designed for developer teams. It features drag-and-drop Kanban boards, sprint velocity tracking, GitHub PR integration, real-time updates via WebSockets, and a sleek dark UI.',
-    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&q=80',
-    techStack: ['React', 'TypeScript', 'Express', 'PostgreSQL', 'Redis', 'Socket.io'],
-    githubLink: 'https://github.com',
-    liveLink: 'https://example.com',
+      'Add a detailed overview of this project. What technologies did you use and why? What were the key challenges? Edit this anytime from the Admin Dashboard.',
+    image: 'https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=800&q=80',
+    techStack: ['React', 'Express.js', 'MongoDB'],
+    githubLink: 'https://github.com/your-username/your-repo',
+    liveLink: '',
     videoDemoLink: '',
     category: 'Full Stack',
     featured: true,
@@ -32,68 +37,36 @@ const seedProjects = [
     order: 2,
   },
   {
-    title: 'AI Resume Builder',
+    title: 'Your Project 3 — AI / ML Project',
     description:
-      'A GPT-4 powered resume builder that generates tailored, ATS-optimized resumes with one-click export to PDF.',
+      'Built an AI-powered application? Add it here. Describe what the model does and how you integrated it into your web app.',
     longDescription:
-      'AI Resume Builder leverages GPT-4 to generate professional, role-specific resumes from a structured form. It includes ATS keyword analysis, cover letter generation, real-time preview, and PDF/DOCX export. Built for job seekers who want to stand out.',
-    image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80',
-    techStack: ['React', 'OpenAI GPT-4', 'Node.js', 'Puppeteer', 'Tailwind', 'MongoDB'],
-    githubLink: 'https://github.com',
-    liveLink: 'https://example.com',
+      'Explain the AI/ML aspect of this project. What dataset or API did you use? What was the outcome? This is a great place to showcase your AI enthusiasm.',
+    image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80',
+    techStack: ['Python', 'React', 'FastAPI', 'MongoDB'],
+    githubLink: 'https://github.com/your-username/your-repo',
+    liveLink: '',
     videoDemoLink: '',
     category: 'AI',
-    featured: true,
+    featured: false,
     color: '#a855f7',
     order: 3,
   },
   {
-    title: 'StoreX — Modern E-Commerce Platform',
+    title: 'Your Project 4 — Frontend / UI Project',
     description:
-      'A feature-complete MERN-stack e-commerce solution with Stripe payments, admin dashboard, and real-time inventory.',
+      'Showcase a frontend or UI-focused project here. Highlight what makes the design or user experience special.',
     longDescription:
-      'StoreX is a scalable MERN-stack e-commerce platform with JWT authentication, role-based access, Stripe payment gateway, real-time inventory management, and an admin dashboard with sales analytics and order tracking.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80',
-    techStack: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redux Toolkit', 'Tailwind'],
-    githubLink: 'https://github.com',
-    liveLink: 'https://example.com',
+      'Describe the design decisions, animations, or UI patterns you used in this project. What inspired the look and feel? You can update this from the Admin Dashboard anytime.',
+    image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80',
+    techStack: ['React', 'Tailwind CSS', 'Framer Motion'],
+    githubLink: 'https://github.com/your-username/your-repo',
+    liveLink: '',
     videoDemoLink: '',
-    category: 'Full Stack',
-    featured: false,
-    color: '#f59e0b',
-    order: 4,
-  },
-  {
-    title: 'CropSense — AI Crop Disease Detector',
-    description:
-      'An AI-powered mobile-first web app detecting crop diseases from leaf images with 94% accuracy using a custom CNN model.',
-    longDescription:
-      'CropSense uses a fine-tuned EfficientNet model to identify 38 plant diseases from photos. It provides treatment recommendations, disease spread predictions, and integrates with local weather APIs to give farmers actionable insights.',
-    image: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&q=80',
-    techStack: ['React', 'Python', 'TensorFlow', 'FastAPI', 'Tailwind', 'MongoDB'],
-    githubLink: 'https://github.com',
-    liveLink: 'https://example.com',
-    videoDemoLink: '',
-    category: 'AI',
+    category: 'Frontend',
     featured: false,
     color: '#10b981',
-    order: 5,
-  },
-  {
-    title: 'CodeForge — Cloud IDE',
-    description:
-      'A browser-based code editor with multi-language support, Docker-sandboxed execution, and real-time pair programming.',
-    longDescription:
-      'CodeForge is a cloud-based IDE supporting 20+ languages with Docker-sandboxed execution, Monaco editor integration, real-time pair programming via WebRTC, and AI-powered autocomplete using the Codex API.',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80',
-    techStack: ['React', 'Monaco Editor', 'Docker', 'Node.js', 'WebRTC', 'Redis'],
-    githubLink: 'https://github.com',
-    liveLink: 'https://example.com',
-    videoDemoLink: '',
-    category: 'Full Stack',
-    featured: false,
-    color: '#ec4899',
-    order: 6,
+    order: 4,
   },
 ];
 

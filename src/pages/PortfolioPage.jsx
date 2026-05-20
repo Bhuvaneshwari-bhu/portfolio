@@ -1,5 +1,7 @@
 import { Toaster } from 'react-hot-toast';
 import Navbar from '../components/Navbar';
+import ScrollProgress from '../components/ScrollProgress';
+import CursorGlow from '../components/CursorGlow';
 import Hero from '../sections/Hero';
 import About from '../sections/About';
 import Skills from '../sections/Skills';
@@ -26,6 +28,8 @@ const toastStyle = {
 export default function PortfolioPage() {
   return (
     <div className="min-h-screen bg-dark-950 text-white overflow-x-hidden">
+      <ScrollProgress />
+      <CursorGlow />
       <Toaster position="bottom-right" toastOptions={toastStyle} />
       <Navbar />
       <main>

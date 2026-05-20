@@ -56,7 +56,7 @@ export default function Hero() {
           {...fadeUp(0.2)}
           className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[1.05] mb-6"
         >
-          Frontend &{' '}
+          AI &{' '}
           <span
             style={{
               background: 'linear-gradient(135deg, #818cf8, #22d3ee, #a855f7)',

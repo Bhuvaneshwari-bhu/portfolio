@@ -5,6 +5,8 @@ import CursorGlow from '../components/CursorGlow';
 import Hero from '../sections/Hero';
 import About from '../sections/About';
 import Skills from '../sections/Skills';
+import Education from '../sections/Education';
+import Experience from '../sections/Experience';
 import Projects from '../sections/Projects';
 import Contact from '../sections/Contact';
 import Footer from '../sections/Footer';
@@ -36,6 +38,8 @@ export default function PortfolioPage() {
         <Hero />
         <About />
         <Skills />
+        <Education />
+        <Experience />
         <Projects />
         <Contact />
       </main>

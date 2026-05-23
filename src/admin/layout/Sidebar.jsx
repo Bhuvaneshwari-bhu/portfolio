@@ -4,6 +4,7 @@ import {
   HiOutlineSquares2X2,
   HiOutlineFolder,
   HiOutlinePlusCircle,
+  HiOutlineBriefcase,
   HiOutlineCog6Tooth,
   HiOutlineArrowLeftOnRectangle,
   HiOutlineSparkles,
@@ -11,10 +12,12 @@ import {
 import { FiExternalLink } from 'react-icons/fi';
 
 const navItems = [
-  { label: 'Dashboard', icon: HiOutlineSquares2X2, to: '/admin' },
-  { label: 'Projects',  icon: HiOutlineFolder,     to: '/admin/projects' },
-  { label: 'Add Project', icon: HiOutlinePlusCircle, to: '/admin/projects/add' },
-  { label: 'Settings', icon: HiOutlineCog6Tooth,   to: '/admin/settings', disabled: true },
+  { label: 'Dashboard',      icon: HiOutlineSquares2X2, to: '/admin' },
+  { label: 'Projects',       icon: HiOutlineFolder,     to: '/admin/projects' },
+  { label: 'Add Project',    icon: HiOutlinePlusCircle, to: '/admin/projects/add' },
+  { label: 'Experiences',    icon: HiOutlineBriefcase,  to: '/admin/experiences' },
+  { label: 'Add Experience', icon: HiOutlinePlusCircle, to: '/admin/experiences/add' },
+  { label: 'Settings',       icon: HiOutlineCog6Tooth,  to: '/admin/settings', disabled: true },
 ];
 
 export default function Sidebar({ collapsed, onClose }) {

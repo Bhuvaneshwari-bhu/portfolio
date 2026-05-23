@@ -17,6 +17,7 @@ const educationData = [
     type: 'Undergraduate',
     color: '#6366f1',
     icon: HiOutlineAcademicCap,
+    logo: '/assets/rgukt.jpeg',
     current: true,
   },
   {
@@ -27,6 +28,7 @@ const educationData = [
     type: 'Pre-University',
     color: '#22d3ee',
     icon: HiOutlineAcademicCap,
+    logo: '/assets/rgukt.jpeg',
     current: false,
   },
   {
@@ -37,6 +39,7 @@ const educationData = [
     type: 'High School',
     color: '#10b981',
     icon: HiOutlineStar,
+    logo: '/assets/vhs.png',
     current: false,
   },
 ];
@@ -50,7 +53,7 @@ const fadeUp = {
   }),
 };
 
-function EducationCard({ institution, degree, duration, cgpa, type, color, icon: Icon, current, index }) {
+function EducationCard({ institution, degree, duration, cgpa, type, color, icon: Icon, logo, current, index }) {
   return (
     <motion.div
       custom={index}
@@ -60,15 +63,13 @@ function EducationCard({ institution, degree, duration, cgpa, type, color, icon:
       viewport={{ once: true, margin: '-30px' }}
       className="relative flex gap-0"
     >
-      {/* Timeline line + dot */}
-      <div className="flex flex-col items-center mr-6 flex-shrink-0">
+      {/* Timeline column */}
+      <div className="flex flex-col items-center mr-5 flex-shrink-0">
         <motion.div
           className="relative w-10 h-10 rounded-xl flex items-center justify-center z-10 flex-shrink-0"
           style={{ background: `${color}18`, border: `1px solid ${color}40` }}
-          whileInView={{ boxShadow: `0 0 20px ${color}25` }}
-          viewport={{ once: true }}
         >
-          <Icon size={18} style={{ color }} />
+          <Icon size={17} style={{ color }} />
           {current && (
             <span
               className="absolute -top-1 -right-1 w-3 h-3 rounded-full border-2 border-dark-950"
@@ -82,7 +83,6 @@ function EducationCard({ institution, degree, duration, cgpa, type, color, icon:
           )}
         </motion.div>
 
-        {/* Vertical connector line */}
         {index < educationData.length - 1 && (
           <div
             className="w-px flex-1 mt-2 min-h-[2rem]"
@@ -93,10 +93,10 @@ function EducationCard({ institution, degree, duration, cgpa, type, color, icon:
 
       {/* Card */}
       <motion.div
-        className="relative glass rounded-2xl p-5 mb-6 flex-1 group cursor-default overflow-hidden"
+        className="relative glass rounded-2xl p-4 sm:p-5 mb-6 flex-1 group cursor-default overflow-hidden"
         whileHover={{ x: 4, transition: { duration: 0.2 } }}
       >
-        {/* Hover glow */}
+        {/* Hover glows */}
         <div
           className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           style={{ background: `radial-gradient(circle at 0% 50%, ${color}12 0%, transparent 70%)` }}
@@ -111,40 +111,59 @@ function EducationCard({ institution, degree, duration, cgpa, type, color, icon:
           style={{ background: `linear-gradient(180deg, ${color}, ${color}40)` }}
         />
 
-        <div className="relative z-10 pl-3">
-          {/* Type badge + current tag */}
-          <div className="flex items-center flex-wrap gap-2 mb-2">
-            <span
-              className="text-[10px] font-semibold uppercase tracking-widest px-2 py-0.5 rounded-full"
-              style={{ background: `${color}15`, border: `1px solid ${color}30`, color }}
-            >
-              {type}
-            </span>
-            {current && (
-              <span className="text-[10px] font-semibold uppercase tracking-widest px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
-                Current
+        <div className="relative z-10 pl-3 flex items-start gap-4">
+          {/* Institution logo */}
+          <div
+            className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden flex items-center justify-center"
+            style={{ background: `${color}10`, border: `1px solid ${color}25` }}
+          >
+            <img
+              src={logo}
+              alt={institution}
+              className="w-full h-full object-contain p-1"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.parentElement.innerHTML = `<span style="color:${color};font-size:20px">🎓</span>`;
+              }}
+            />
+          </div>
+
+          {/* Details */}
+          <div className="flex-1 min-w-0">
+            {/* Type badge + current tag */}
+            <div className="flex items-center flex-wrap gap-2 mb-1.5">
+              <span
+                className="text-[10px] font-semibold uppercase tracking-widest px-2 py-0.5 rounded-full"
+                style={{ background: `${color}15`, border: `1px solid ${color}30`, color }}
+              >
+                {type}
               </span>
-            )}
-          </div>
-
-          <h3 className="text-white font-bold text-sm sm:text-base leading-snug mb-1">
-            {degree}
-          </h3>
-          <div className="flex items-start gap-1 mb-3">
-            <HiOutlineMapPin size={13} className="text-white/35 mt-0.5 flex-shrink-0" />
-            <p className="text-white/45 text-xs leading-snug">{institution}</p>
-          </div>
-
-          <div className="flex items-center flex-wrap gap-4">
-            <div className="flex items-center gap-1.5">
-              <HiOutlineCalendar size={13} className="text-white/35" />
-              <span className="text-white/55 text-xs font-medium">{duration}</span>
+              {current && (
+                <span className="text-[10px] font-semibold uppercase tracking-widest px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+                  Current
+                </span>
+              )}
             </div>
-            <div className="flex items-center gap-1.5">
-              <HiOutlineStar size={13} style={{ color }} />
-              <span className="text-xs font-semibold" style={{ color }}>
-                CGPA: {cgpa}
-              </span>
+
+            <h3 className="text-white font-bold text-sm sm:text-base leading-snug mb-1">
+              {degree}
+            </h3>
+            <div className="flex items-start gap-1 mb-2.5">
+              <HiOutlineMapPin size={12} className="text-white/35 mt-0.5 flex-shrink-0" />
+              <p className="text-white/45 text-xs leading-snug">{institution}</p>
+            </div>
+
+            <div className="flex items-center flex-wrap gap-4">
+              <div className="flex items-center gap-1.5">
+                <HiOutlineCalendar size={12} className="text-white/35" />
+                <span className="text-white/55 text-xs font-medium">{duration}</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <HiOutlineStar size={12} style={{ color }} />
+                <span className="text-xs font-semibold" style={{ color }}>
+                  CGPA: {cgpa}
+                </span>
+              </div>
             </div>
           </div>
         </div>

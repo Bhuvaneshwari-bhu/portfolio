@@ -10,8 +10,6 @@ import {
   HiOutlineBookOpen,
   HiOutlineWrenchScrewdriver,
   HiOutlineLightBulb,
-  HiOutlinePuzzlePiece,
-  HiOutlineArrowTrendingUp,
 } from 'react-icons/hi2';
 import SectionHeading from '../components/SectionHeading';
 import GlowBlob from '../components/GlowBlob';
@@ -50,51 +48,6 @@ const buildCards = [
   },
 ];
 
-/* ── Journey bento cards ──────────────────────────────────────────────────── */
-const journeyCards = [
-  {
-    icon: HiOutlineBookOpen,
-    title: 'Started with Frontend',
-    desc: 'Began my journey with HTML, CSS, and JavaScript — building static pages and learning the fundamentals of the web.',
-    color: '#6366f1',
-    size: 'large',
-  },
-  {
-    icon: HiOutlineServerStack,
-    title: 'Exploring MERN Stack',
-    desc: 'Moved into full-stack development, connecting frontends to Node.js + MongoDB backends.',
-    color: '#22d3ee',
-    size: 'normal',
-  },
-  {
-    icon: HiOutlineCpuChip,
-    title: 'Building AI Projects',
-    desc: 'Integrating AI APIs and exploring how ML can enhance everyday web applications.',
-    color: '#a855f7',
-    size: 'normal',
-  },
-  {
-    icon: HiOutlinePaintBrush,
-    title: 'Improving UI/UX Skills',
-    desc: 'Studying design systems, Tailwind CSS, and motion design to craft premium user experiences.',
-    color: '#ec4899',
-    size: 'normal',
-  },
-  {
-    icon: HiOutlinePuzzlePiece,
-    title: 'Practicing Problem Solving',
-    desc: 'Sharpening DSA and logic skills through consistent coding practice and challenges.',
-    color: '#f59e0b',
-    size: 'normal',
-  },
-  {
-    icon: HiOutlineArrowTrendingUp,
-    title: 'Always Levelling Up',
-    desc: 'Continuously learning new technologies, frameworks, and best practices every single day.',
-    color: '#10b981',
-    size: 'large',
-  },
-];
 
 const stagger = {
   hidden: {},
@@ -144,53 +97,6 @@ function BuildCard({ icon: Icon, title, desc, color, index }) {
   );
 }
 
-/* ── Journey bento card ───────────────────────────────────────────────────── */
-function JourneyCard({ icon: Icon, title, desc, color, size, index }) {
-  const isLarge = size === 'large';
-  return (
-    <motion.div
-      className={`relative glass rounded-2xl p-5 group cursor-default overflow-hidden ${
-        isLarge ? 'sm:col-span-2' : ''
-      }`}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.55, delay: index * 0.08, ease: [0.21, 1.04, 0.58, 1] }}
-      whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-    >
-      {/* Animated corner accent */}
-      <div
-        className="absolute top-0 right-0 w-24 h-24 rounded-bl-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-        style={{ background: `radial-gradient(circle at top right, ${color}18, transparent 70%)` }}
-      />
-
-      <div
-        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{ boxShadow: `inset 0 0 0 1px ${color}30` }}
-      />
-
-      <div className="relative z-10 flex items-start gap-4">
-        {/* Icon */}
-        <div
-          className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
-          style={{ background: `${color}18`, border: `1px solid ${color}28` }}
-        >
-          <Icon size={18} style={{ color }} />
-        </div>
-
-        <div>
-          <div
-            className="text-xs font-semibold mb-1.5 tracking-wide uppercase"
-            style={{ color }}
-          >
-            {title}
-          </div>
-          <p className="text-white/50 text-sm leading-relaxed">{desc}</p>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
 
 /* ── Main component ───────────────────────────────────────────────────────── */
 export default function About() {
@@ -332,32 +238,6 @@ export default function About() {
           </motion.div>
         </div>
 
-        {/* ── Learning & Building Journey bento ──────────────────────── */}
-        <div>
-          <motion.h3
-            className="text-xl font-bold text-white mb-2 text-center"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            Learning &amp; Building <span className="gradient-text">Journey</span>
-          </motion.h3>
-          <motion.p
-            className="text-white/40 text-sm text-center mb-8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
-            Every step is a lesson; every project, a milestone
-          </motion.p>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {journeyCards.map((card, i) => (
-              <JourneyCard key={card.title} {...card} index={i} />
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 
-const projectRoutes = require('./routes/projectRoutes');
+const projectRoutes    = require('./routes/projectRoutes');
+const experienceRoutes = require('./routes/experienceRoutes');
 const notFound = require('./middleware/notFound');
 const errorHandler = require('./middleware/errorHandler');
 
@@ -43,7 +44,8 @@ app.get('/api/health', (req, res) => {
 });
 
 // ─── Routes ────────────────────────────────────────────────────────────────────
-app.use('/api/projects', projectRoutes);
+app.use('/api/projects',    projectRoutes);
+app.use('/api/experiences', experienceRoutes);
 
 // ─── 404 + Error handlers (must be last) ──────────────────────────────────────
 app.use(notFound);

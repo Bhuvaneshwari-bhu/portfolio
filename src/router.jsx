@@ -6,11 +6,14 @@ import { motion } from 'framer-motion';
 import PortfolioPage from './pages/PortfolioPage';
 
 // Lazy-load admin chunks (only downloaded when /admin is visited)
-const AdminLayout      = lazy(() => import('./admin/layout/AdminLayout'));
-const AdminDashboard   = lazy(() => import('./admin/pages/AdminDashboard'));
-const AdminProjects    = lazy(() => import('./admin/pages/AdminProjects'));
-const AdminAddProject  = lazy(() => import('./admin/pages/AdminAddProject'));
-const AdminEditProject = lazy(() => import('./admin/pages/AdminEditProject'));
+const AdminLayout         = lazy(() => import('./admin/layout/AdminLayout'));
+const AdminDashboard      = lazy(() => import('./admin/pages/AdminDashboard'));
+const AdminProjects       = lazy(() => import('./admin/pages/AdminProjects'));
+const AdminAddProject     = lazy(() => import('./admin/pages/AdminAddProject'));
+const AdminEditProject    = lazy(() => import('./admin/pages/AdminEditProject'));
+const AdminExperiences    = lazy(() => import('./admin/pages/AdminExperiences'));
+const AdminAddExperience  = lazy(() => import('./admin/pages/AdminAddExperience'));
+const AdminEditExperience = lazy(() => import('./admin/pages/AdminEditExperience'));
 
 function AdminFallback() {
   return (
@@ -40,7 +43,10 @@ const router = createBrowserRouter([
       { index: true,              element: <Suspense fallback={<AdminFallback />}><AdminDashboard /></Suspense> },
       { path: 'projects',         element: <Suspense fallback={<AdminFallback />}><AdminProjects /></Suspense> },
       { path: 'projects/add',     element: <Suspense fallback={<AdminFallback />}><AdminAddProject /></Suspense> },
-      { path: 'projects/edit/:id',element: <Suspense fallback={<AdminFallback />}><AdminEditProject /></Suspense> },
+      { path: 'projects/edit/:id',    element: <Suspense fallback={<AdminFallback />}><AdminEditProject /></Suspense> },
+      { path: 'experiences',          element: <Suspense fallback={<AdminFallback />}><AdminExperiences /></Suspense> },
+      { path: 'experiences/add',      element: <Suspense fallback={<AdminFallback />}><AdminAddExperience /></Suspense> },
+      { path: 'experiences/edit/:id', element: <Suspense fallback={<AdminFallback />}><AdminEditExperience /></Suspense> },
     ],
   },
 ]);

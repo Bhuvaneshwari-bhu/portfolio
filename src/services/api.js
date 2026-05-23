@@ -42,4 +42,22 @@ export const projectsApi = {
     api.delete(`/projects/${id}`).then((r) => r.data),
 };
 
+// ─── Experience endpoints ──────────────────────────────────────────────────────
+export const experiencesApi = {
+  getAll: () =>
+    api.get('/experiences').then((r) => r.data.data || []),
+
+  getById: (id) =>
+    api.get(`/experiences/${id}`).then((r) => r.data.data),
+
+  create: (payload) =>
+    api.post('/experiences', payload).then((r) => r.data.data),
+
+  update: (id, payload) =>
+    api.put(`/experiences/${id}`, payload).then((r) => r.data.data),
+
+  remove: (id) =>
+    api.delete(`/experiences/${id}`).then((r) => r.data),
+};
+
 export default api;
